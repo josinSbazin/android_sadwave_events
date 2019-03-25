@@ -1,18 +1,28 @@
 package com.sadwave.events
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
-import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
+import androidx.core.view.GravityCompat
 import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.sadwave.events.mvp.MainPresenter
+import com.sadwave.events.mvp.MainView
+import com.sadwave.events.mvp.State
+import com.sadwave.events.net.CityEntity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-class MainActivity : MvpAppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener {
+    private val citiesAdapter: CitiesAdapter = CitiesAdapter(this)
+
+    @InjectPresenter
+    lateinit var presenter: MainPresenter
+
+    @ProvidePresenter
+    fun provide(): MainPresenter {
+        return MainPresenter().also { it.refresh() }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +34,8 @@ class MainActivity : MvpAppCompatActivity(), NavigationView.OnNavigationItemSele
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-        nav_view.setNavigationItemSelectedListener(this)
+
+        cities.adapter = citiesAdapter
     }
 
     override fun onBackPressed() {
@@ -35,10 +46,25 @@ class MainActivity : MvpAppCompatActivity(), NavigationView.OnNavigationItemSele
         }
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
-
-        drawer_layout.closeDrawer(GravityCompat.START)
-        return true
+    override fun onState(state: State) {
+        when (state) {
+            State.Loading -> {}
+            is State.Error -> {}
+//                progress_layout.showError(
+//                R.drawable.ic_error_black_24dp,
+//                "Беда!",
+//                "Не получилось",
+//                "Повторить"
+//            ) {
+//                presenter.refresh()
+//            }
+            is State.OnData -> {}
+        }
     }
+
+    override fun onCityClick(city: CityEntity) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
 }
