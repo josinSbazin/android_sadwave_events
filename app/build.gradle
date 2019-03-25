@@ -41,6 +41,7 @@ dependencies {
 
     implementation 'com.arello-mobile:moxy:1.5.6'
     kapt 'com.arello-mobile:moxy-compiler:1.5.6'
+    implementation 'com.github.arello-mobile.moxy:moxy-androidx:040da05c41'
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
@@ -49,4 +50,5 @@ dependencies {
 
     implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
     implementation 'org.koin:koin-android:2.0.0-rc-1'
+
 }
