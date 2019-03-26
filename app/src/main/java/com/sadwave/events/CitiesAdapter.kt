@@ -14,9 +14,26 @@ class CitiesAdapter(private val listener: Listener) : RecyclerView.Adapter<Citie
             notifyDataSetChanged()
         }
 
+    private var selectedIndex: Int = -1
+    var selectedCity: CityEntity? = null
+        set(value) {
+            field = value
+            selectedIndex = cities.indexOf(value)
+            if (selectedIndex == -1) {
+                notifyDataSetChanged()
+            } else {
+                notifyItemChanged(selectedIndex)
+            }
+        }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_city, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
         return ViewHolder(view)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        if (position == selectedIndex) return R.layout.item_selected_city
+        return R.layout.item_city
     }
 
     override fun getItemCount(): Int {

@@ -43,4 +43,7 @@ dependencies {
 
     implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
 
+    implementation 'com.github.vlonjatg:progress-activity:2.0.5'
+
+    implementation 'org.koin:koin-android:2.0.0-rc-1'
 }

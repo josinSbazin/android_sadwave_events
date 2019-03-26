@@ -12,5 +12,5 @@ interface MainView : MvpView {
 sealed class State {
     object Loading : State()
     class Error(val error: Exception) : State()
-    class OnData(cities: List<CityEntity>, currentCity: CityEntity, events: List<EventEntity>) : State()
+    class OnData(val cities: List<CityEntity>, val currentCity: CityEntity, val events: List<EventEntity>) : State()
 }
