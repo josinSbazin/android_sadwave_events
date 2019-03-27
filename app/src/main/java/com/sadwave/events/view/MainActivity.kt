@@ -3,6 +3,7 @@ package com.sadwave.events.view
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -56,9 +57,11 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
     override fun onState(state: State) {
         when (state) {
             State.Loading -> {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 progressLayout.showLoading()
             }
             is State.Error -> {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 progressLayout.showError(
                     R.drawable.ic_error_black_24dp,
                     getString(R.string.error_title),
@@ -69,7 +72,9 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
                 }
             }
             is State.OnData -> {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
                 progressLayout.showContent()
+                toolbar.title = state.currentCity.name
                 citiesAdapter.setData(state.cities, state.currentCity)
                 eventsAdapter.events = state.events
             }

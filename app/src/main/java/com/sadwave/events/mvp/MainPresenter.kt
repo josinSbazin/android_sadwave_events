@@ -17,6 +17,7 @@ class MainPresenter(private val api: API) : MvpPresenter<MainView>() {
     }
 
     fun refresh() {
+        viewState.onState(State.Loading)
         job?.cancel()
         job = GlobalScope.launch(Dispatchers.Main) {
             try {
@@ -33,6 +34,7 @@ class MainPresenter(private val api: API) : MvpPresenter<MainView>() {
     }
 
     fun selectCity(city: CityEntity) {
+        viewState.onState(State.Loading)
         job?.cancel()
         job = GlobalScope.launch(Dispatchers.Main) {
             try {

@@ -9,4 +9,5 @@
     <string name="error_title">Беда!</string>
     <string name="error_description">Не получилось</string>
     <string name="error_btn_text">Повторить</string>
+    <string name="title_sadwave">Sadwave</string>
 </resources>

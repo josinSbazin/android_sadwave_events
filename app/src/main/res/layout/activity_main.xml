@@ -1,50 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.vlonjatg.progressactivity.ProgressFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/progressLayout"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-        android:id="@+id/drawerLayout"
+    <include
+        layout="@layout/main_content"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        android:layout_gravity="start"
+        android:background="@color/colorAccent"
+        android:fitsSystemWindows="true">
 
-        <include
-            layout="@layout/main_content"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="@color/colorAccent"
-            android:fitsSystemWindows="true">
+            <include layout="@layout/nav_header_main" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cities"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_city" />
 
-                <include layout="@layout/nav_header_main" />
+        </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/cities"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_city" />
+    </com.google.android.material.navigation.NavigationView>
 
-            </LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
 
-        </com.google.android.material.navigation.NavigationView>
 
-    </androidx.drawerlayout.widget.DrawerLayout>
-
-</com.vlonjatg.progressactivity.ProgressFrameLayout>
