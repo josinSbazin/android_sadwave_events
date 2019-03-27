@@ -10,4 +10,7 @@
     <string name="error_description">Не получилось</string>
     <string name="error_btn_text">Повторить</string>
     <string name="title_sadwave">Sadwave</string>
+    <string name="cd_event_image">Афиша</string>
+    <string name="cd_share">Поделиться</string>
+    <string name="cd_calendar">Добавить событие</string>
 </resources>

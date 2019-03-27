@@ -25,14 +25,15 @@
     <com.vlonjatg.progressactivity.ProgressFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/progressLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:loadingProgressBarColor="@color/colorPrimary">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/events"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:context=".view.MainActivity"
             tools:showIn="@layout/main_content" />
 

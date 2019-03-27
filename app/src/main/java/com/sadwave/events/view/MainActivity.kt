@@ -44,6 +44,7 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
         toggle.syncState()
 
         cities.adapter = citiesAdapter
+        events.adapter = eventsAdapter
     }
 
     override fun onBackPressed() {
