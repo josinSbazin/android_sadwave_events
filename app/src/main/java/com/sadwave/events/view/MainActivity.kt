@@ -28,6 +28,8 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
     fun provide(): MainPresenter = get()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme_NoActionBar)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
