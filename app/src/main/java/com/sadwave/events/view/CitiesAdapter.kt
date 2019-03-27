@@ -1,30 +1,22 @@
-package com.sadwave.events
+package com.sadwave.events.view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.sadwave.events.R
 import com.sadwave.events.net.CityEntity
 
 class CitiesAdapter(private val listener: Listener) : RecyclerView.Adapter<CitiesAdapter.ViewHolder>() {
-    var cities: List<CityEntity> = emptyList()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
+    private var cities: List<CityEntity> = emptyList()
     private var selectedIndex: Int = -1
-    var selectedCity: CityEntity? = null
-        set(value) {
-            field = value
-            selectedIndex = cities.indexOf(value)
-            if (selectedIndex == -1) {
-                notifyDataSetChanged()
-            } else {
-                notifyItemChanged(selectedIndex)
-            }
-        }
+
+    fun setData(cities: List<CityEntity>, selectedCity: CityEntity?) {
+        this.cities = cities
+        selectedIndex = cities.indexOf(selectedCity)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)

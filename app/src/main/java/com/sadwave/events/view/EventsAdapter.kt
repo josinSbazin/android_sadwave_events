@@ -1,4 +1,4 @@
-package com.sadwave.events
+package com.sadwave.events.view
 
 import android.view.LayoutInflater
 import android.view.View

@@ -5,6 +5,7 @@ import com.arellomobile.mvp.MvpPresenter
 import com.sadwave.events.net.API
 import com.sadwave.events.net.CityEntity
 import kotlinx.coroutines.*
+import timber.log.Timber
 
 @InjectViewState
 class MainPresenter(private val api: API) : MvpPresenter<MainView>() {
@@ -25,6 +26,7 @@ class MainPresenter(private val api: API) : MvpPresenter<MainView>() {
             } catch (e: CancellationException) {
                 // no op
             } catch (e: Exception) {
+                Timber.d(e)
                 viewState.onState(State.Error(e))
             }
         }
@@ -38,6 +40,7 @@ class MainPresenter(private val api: API) : MvpPresenter<MainView>() {
             } catch (e: CancellationException) {
                 // no op
             } catch (e: Exception) {
+                Timber.d(e)
                 viewState.onState(State.Error(e))
             }
         }
