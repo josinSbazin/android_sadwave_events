@@ -119,17 +119,24 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
 
         val calendar = Calendar.getInstance()
         val time = sadDateFormatter.parseTime(event.date?.time)
+        var hasTime = false
         if (time != null) {
+            hasTime = true
             date.time += time.time
         }
         calendar.time = date
 
         val intent = Intent(Intent.ACTION_INSERT)
             .setData(Events.CONTENT_URI)
-            .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, calendar.timeInMillis + TimeZone.getDefault().rawOffset)
             .putExtra(Events.TITLE, event.name ?: getString(R.string.gig_default))
             .putExtra(Events.DESCRIPTION, event.overview ?: "")
             .putExtra(Events.AVAILABILITY, Events.AVAILABILITY_BUSY)
+        if (hasTime) {
+            intent.putExtra(
+                CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+                calendar.timeInMillis + TimeZone.getDefault().rawOffset
+            )
+        }
         startActivity(intent)
     }
 
