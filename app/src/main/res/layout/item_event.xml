@@ -31,31 +31,41 @@
             app:layout_constraintVertical_chainStyle="spread_inside"
             app:srcCompat="@drawable/default_image" />
 
-        <ImageButton
-            android:id="@+id/calendar"
+        <LinearLayout
+            android:id="@+id/itemsContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:contentDescription="@string/cd_calendar"
-            android:padding="8dp"
-            app:layout_constraintEnd_toStartOf="@id/share"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_calendar" />
-
-        <ImageButton
-            android:id="@+id/share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:contentDescription="@string/cd_share"
-            android:padding="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/shape_rounded"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_share" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/cd_calendar"
+                android:padding="8dp"
+                app:layout_constraintEnd_toStartOf="@id/share"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_calendar" />
+
+            <ImageButton
+                android:id="@+id/share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/cd_share"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_share" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/date"

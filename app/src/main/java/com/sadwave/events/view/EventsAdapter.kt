@@ -5,11 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.sadwave.events.R
 import com.sadwave.events.net.EventEntity
+import com.sadwave.events.util.SadDateFormatter
 import kotlinx.android.synthetic.main.item_event.view.*
+import timber.log.Timber
+import java.lang.Exception
 
-class EventsAdapter(private val listener: Listener) : RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
+class EventsAdapter(private val listener: Listener, private val sadDateFormatter: SadDateFormatter) :
+    RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
     var events: List<EventEntity> = emptyList()
         set(value) {
             field = value
@@ -51,17 +56,26 @@ class EventsAdapter(private val listener: Listener) : RecyclerView.Adapter<Event
                     .with(itemView.context)
                     .load(imgUrl)
                     .placeholder(R.drawable.default_image)
+                    .transition(DrawableTransitionOptions().crossFade())
                     .into(itemView.image)
             }
 
             val eventDate = event.date?.date
             val eventTime = event.date?.time
-            
-            var date = eventDate
-            if (eventTime != null) {
-                date += " в $eventTime"
+
+            var dateString = ""
+            if (eventDate != null) {
+                dateString = sadDateFormatter.getFormattedDate(eventDate)
             }
-            itemView.date.textOrGone = date?.trim()
+
+            if (eventTime != null) {
+                val timeString = sadDateFormatter.getFormattedTime(eventTime)
+                if (timeString.isNotBlank()) {
+                    dateString += " в $timeString"
+                }
+            }
+
+            itemView.date.textOrGone = dateString.trim()
             itemView.description.textOrGone = event.overview?.trim()
         }
     }

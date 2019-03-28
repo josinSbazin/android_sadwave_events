@@ -3,6 +3,7 @@ package com.sadwave.events
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.sadwave.events.mvp.MainPresenter
 import com.sadwave.events.net.API
+import com.sadwave.events.util.SadDateFormatter
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -14,6 +15,7 @@ val mainModule = module {
     single { createOkHttpClient() }
     single { createRetrofitClient(baseUrl, get()) }
     single { get<Retrofit>().create(API::class.java) }
+    single { SadDateFormatter() }
     factory {
         MainPresenter(get())
     }

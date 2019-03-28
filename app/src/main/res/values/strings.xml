@@ -13,4 +13,6 @@
     <string name="cd_event_image">Афиша</string>
     <string name="cd_share">Поделиться</string>
     <string name="cd_calendar">Добавить событие</string>
+    <string name="share">Поделиться событием %s</string>
+    <string name="gig_default">Гигуля</string>
 </resources>
