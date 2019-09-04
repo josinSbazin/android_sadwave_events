@@ -55,7 +55,7 @@ class EventsAdapter(private val listener: Listener, private val sadDateFormatter
                 Glide
                     .with(itemView.context)
                     .load(imgUrl)
-                    .placeholder(R.drawable.default_image)
+                    .placeholder(R.drawable.default_empty)
                     .transition(DrawableTransitionOptions().crossFade())
                     .into(itemView.image)
             }

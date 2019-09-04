@@ -8,7 +8,7 @@
     app:cardElevation="4dp"
     app:cornerRadius="2dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="spread_inside"
-            app:srcCompat="@drawable/default_image" />
+            app:srcCompat="@drawable/default_empty" />
 
         <LinearLayout
             android:id="@+id/itemsContainer"

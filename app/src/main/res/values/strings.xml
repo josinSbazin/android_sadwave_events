@@ -15,4 +15,6 @@
     <string name="cd_calendar">Добавить событие</string>
     <string name="share">Поделиться событием %s</string>
     <string name="gig_default">Гигуля</string>
+    <string name="preferences_file_name">com.sadwave.events.preferences</string>
+    <string name="preferences_last_city">last_city</string>
 </resources>
