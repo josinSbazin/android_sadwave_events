@@ -17,4 +17,6 @@
     <string name="gig_default">Гигуля</string>
     <string name="preferences_file_name">com.sadwave.events.preferences</string>
     <string name="preferences_last_city">last_city</string>
+    <string name="empty_cities">Городов нет</string>
+    <string name="empty_events">Мертвецы, гигов нет</string>
 </resources>

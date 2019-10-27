@@ -22,7 +22,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.vlonjatg.progressactivity.ProgressFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.vlonjatg.progressactivity.ProgressFrameLayout
         android:id="@+id/progressLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -36,6 +36,20 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:context=".view.MainActivity"
             tools:showIn="@layout/main_content" />
+
+        <TextView
+            android:id="@+id/emptyEventsMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="@string/empty_events"
+            android:textSize="18sp"
+            android:visibility="gone" />
 
     </com.vlonjatg.progressactivity.ProgressFrameLayout>
 

@@ -10,10 +10,11 @@ import com.sadwave.events.R
 import com.sadwave.events.net.EventEntity
 import com.sadwave.events.util.SadDateFormatter
 import kotlinx.android.synthetic.main.item_event.view.*
-import timber.log.Timber
-import java.lang.Exception
 
-class EventsAdapter(private val listener: Listener, private val sadDateFormatter: SadDateFormatter) :
+class EventsAdapter(
+    private val listener: Listener,
+    private val sadDateFormatter: SadDateFormatter
+) :
     RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
     var events: List<EventEntity> = emptyList()
         set(value) {
@@ -38,6 +39,10 @@ class EventsAdapter(private val listener: Listener, private val sadDateFormatter
         holder.bind(events[position])
     }
 
+    override fun onViewRecycled(holder: ViewHolder) {
+        holder.recycle()
+    }
+
     inner class ViewHolder(containerView: View) : RecyclerView.ViewHolder(containerView) {
         private lateinit var event: EventEntity
 
@@ -55,8 +60,9 @@ class EventsAdapter(private val listener: Listener, private val sadDateFormatter
                 Glide
                     .with(itemView.context)
                     .load(imgUrl)
-                    .placeholder(R.drawable.default_empty)
+                    .placeholder(R.drawable.default_image)
                     .transition(DrawableTransitionOptions().crossFade())
+                    .dontTransform()
                     .into(itemView.image)
             }
 
@@ -77,6 +83,12 @@ class EventsAdapter(private val listener: Listener, private val sadDateFormatter
 
             itemView.date.textOrGone = dateString.trim()
             itemView.description.textOrGone = event.overview?.trim()
+        }
+
+        fun recycle() {
+            Glide
+                .with(itemView.context)
+                .clear(itemView.image)
         }
     }
 
