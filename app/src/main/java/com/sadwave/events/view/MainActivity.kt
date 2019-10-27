@@ -1,5 +1,6 @@
 package com.sadwave.events.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -23,6 +24,8 @@ import android.widget.Toast
 import com.sadwave.events.util.SadDateFormatter
 import java.util.*
 import android.net.Uri
+import android.view.View
+import com.google.android.material.navigation.NavigationView
 import com.sadwave.events.R
 
 
@@ -55,6 +58,8 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
 
         cities.adapter = citiesAdapter
         events.adapter = eventsAdapter
+
+        presenter.refresh(loadLastCityName())
     }
 
     override fun onBackPressed() {
@@ -79,7 +84,7 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
                     getString(R.string.error_description),
                     getString(R.string.error_btn_text)
                 ) {
-                    presenter.refresh()
+                    presenter.refresh(loadLastCityName())
                 }
             }
             is State.OnData -> {
@@ -93,7 +98,12 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
     }
 
     override fun onCityClick(city: CityEntity) {
+        if (city.name == loadLastCityName()) {
+            drawerLayout.closeDrawers()
+            return
+        }
         presenter.selectCity(city)
+        saveLastCityName(city.name)
     }
 
     override fun onEventClick(event: EventEntity) {
@@ -142,5 +152,18 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
 
     private fun showWrongDateMessage() {
         Toast.makeText(this, "Не удалось сохранить мероприятие", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun saveLastCityName(name: String?) {
+        val sharedPref = getSharedPreferences(getString(R.string.preferences_file_name), Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putString(getString(R.string.preferences_last_city), name)
+            apply()
+        }
+    }
+
+    private fun loadLastCityName(): String? {
+        val sharedPref = getSharedPreferences(getString(R.string.preferences_file_name), Context.MODE_PRIVATE) ?: return null
+        return sharedPref.getString(getString(R.string.preferences_last_city), null)
     }
 }
