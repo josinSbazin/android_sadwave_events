@@ -64,6 +64,8 @@ class EventsAdapter(
                     .transition(DrawableTransitionOptions().crossFade())
                     .dontTransform()
                     .into(itemView.image)
+            } else {
+                itemView.image.setImageResource(R.drawable.default_image)
             }
 
             val eventDate = event.date?.date
