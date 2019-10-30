@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#040404</color>
     <color name="colorAccent">#F2F2F2</color>
     <color name="colorSelected">#33000000</color>
+    <color name="rdColorPrimaryLight">#333333</color>
+    <color name="rdColorDarkText">#656066</color>
+    <color name="rdColorTint">#656066</color>
 </resources>

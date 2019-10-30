@@ -16,9 +16,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/rdColorPrimaryLight"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="@string/title_sadwave" />
+            app:title="@string/title_sadwave"
+            app:titleTextColor="@color/colorAccent" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -33,6 +34,7 @@
             android:id="@+id/events"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/rdColorPrimaryLight"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:context=".view.MainActivity"
             tools:showIn="@layout/main_content" />

@@ -18,15 +18,18 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/colorAccent"
-        android:fitsSystemWindows="true">
+        android:background="@drawable/rd_main_gradient"
+        android:fitsSystemWindows="true"
+        android:maxWidth="304dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/nav_header_main" />
+            <include
+                layout="@layout/nav_header_main"
+                android:background="#FFFFFF" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cities"
@@ -35,7 +38,7 @@
                 android:overScrollMode="never"
                 android:visibility="visible"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_city" />
+                tools:listitem="@layout/rd_item_city" />
 
             <TextView
                 android:id="@+id/emptyCitiesMessage"
