@@ -28,8 +28,7 @@
             android:orientation="vertical">
 
             <include
-                layout="@layout/nav_header_main"
-                android:background="#FFFFFF" />
+                layout="@layout/nav_header_main"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cities"
