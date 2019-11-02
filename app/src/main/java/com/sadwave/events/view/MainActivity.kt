@@ -78,7 +78,7 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
             is State.Error -> {
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 progressLayout.showError(
-                    R.drawable.ic_error_black_24dp,
+                    R.drawable.ic_error_black,
                     getString(R.string.error_title),
                     getString(R.string.error_description),
                     getString(R.string.error_btn_text)

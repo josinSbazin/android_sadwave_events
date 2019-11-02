@@ -5,32 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
+    android:background="@drawable/shape_rounded"
+    app:cardBackgroundColor="@color/design_default_color_surface"
     app:cardElevation="4dp"
-    app:cornerRadius="2dp">
+    app:cornerRadius="20dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_white_rounded">
+        android:background="@drawable/shape_white_rounded"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:background="@drawable/shape_rounded"
+            android:adjustViewBounds="true"
+            android:background="@drawable/shape_white_rounded"
             android:contentDescription="@string/cd_event_image"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="spread_inside"
-            app:srcCompat="@drawable/default_empty" />
+            android:scaleType="fitStart"
+            tools:srcCompat="@drawable/default_image" />
+
+        <TextView
+            android:id="@+id/date2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="20sp"
+            tools:text="FXD:ЗИМА" />
 
         <LinearLayout
             android:id="@+id/dateplace"
@@ -38,33 +52,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image">
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ic_error_black_24dp" />
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:fontFamily="@font/montserrat_bold"
+                android:drawableStart="@drawable/ic_rd_school_calendar_white"
+                android:drawableLeft="@drawable/ic_rd_school_calendar_white"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/montserrat_semibold"
                 android:textSize="15sp"
-                tools:text="@tools:sample/date/ddmmyy" />
+                tools:text="22 августа, Воскресенье" />
         </LinearLayout>
 
         <LinearLayout
@@ -73,51 +75,32 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateplace">
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ic_error_black_24dp" />
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:fontFamily="@font/montserrat_bold"
+                android:drawableStart="@drawable/ic_rd_time_white"
+                android:drawableLeft="@drawable/ic_rd_time_white"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/montserrat_semibold"
                 android:textSize="15sp"
                 tools:text="16:00" />
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ic_error_black_24dp" />
 
             <TextView
                 android:id="@+id/place"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:fontFamily="@font/montserrat_bold"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:drawableStart="@drawable/ic_rd_place_white"
+                android:drawableLeft="@drawable/ic_rd_place_white"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/montserrat_semibold"
                 android:textSize="15sp"
                 tools:text="Клуб «Плутон»" />
 
@@ -125,61 +108,48 @@
 
         <TextView
             android:id="@+id/description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="133dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:fontFamily="@font/montserrat"
+            android:fontFamily="@font/montserrat_medium"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/timeplace"
-            tools:text="@tools:sample/lorem/random[1]" />
+            tools:text="@tools:sample/lorem/random[0]" />
 
         <LinearLayout
             android:id="@+id/itemsContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_gravity="end"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/shape_rounded"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description">
+            android:gravity="end">
 
             <ImageButton
                 android:id="@+id/calendar"
+                style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/cd_calendar"
                 android:padding="8dp"
                 android:tint="#39853C"
-                app:layout_constraintEnd_toStartOf="@id/share"
-                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_calendar" />
 
             <ImageButton
                 android:id="@+id/share"
+                style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/cd_share"
                 android:padding="8dp"
                 android:tint="#39853C"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_share" />
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

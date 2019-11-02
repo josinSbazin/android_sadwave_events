@@ -10,4 +10,4 @@
     android:paddingStart="32dp"
     android:paddingEnd="32dp"
     android:scaleType="fitXY"
-    app:srcCompat="@drawable/logo" />
+    app:srcCompat="@drawable/logo_grey" />

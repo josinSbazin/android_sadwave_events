@@ -18,26 +18,28 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@drawable/rd_main_gradient"
+        android:background="@drawable/gradient_grey"
         android:fitsSystemWindows="true"
         android:maxWidth="304dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include
-                layout="@layout/nav_header_main"/>
+            <include layout="@layout/nav_header_main" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cities"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
                 android:overScrollMode="never"
                 android:visibility="visible"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/rd_item_city" />
+                tools:listitem="@layout/item_city" />
 
             <TextView
                 android:id="@+id/emptyCitiesMessage"
@@ -50,6 +52,87 @@
                 android:text="@string/empty_cities"
                 android:textSize="18sp"
                 android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="17dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="bottom|center"
+                android:text="@string/main_social_message"
+                android:textColor="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="35dp"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/button_fb"
+                    style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:contentDescription="@string/cd_facebook"
+                    android:focusable="true"
+                    android:onClick="onClick_social"
+                    android:src="@drawable/ic_bc_fb" />
+
+                <ImageButton
+                    android:id="@+id/button_vk"
+                    style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:contentDescription="@string/cd_vkontakte"
+                    android:focusable="true"
+                    android:onClick="onClick_social"
+                    android:src="@drawable/ic_bc_vk" />
+
+                <ImageButton
+                    android:id="@+id/button_tg"
+                    style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:contentDescription="@string/cd_telegram"
+                    android:focusable="true"
+                    android:onClick="onClick_social"
+                    android:src="@drawable/ic_bc_telegram" />
+
+                <ImageButton
+                    android:id="@+id/button_zn"
+                    style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:contentDescription="@string/cd_yandex_zen"
+                    android:focusable="true"
+                    android:onClick="onClick_social"
+                    android:src="@drawable/ic_bc_dzen" />
+
+                <ImageButton
+                    android:id="@+id/button_tt"
+                    style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:contentDescription="@string/cd_twitter"
+                    android:focusable="true"
+                    android:onClick="onClick_social"
+                    android:src="@drawable/ic_bc_twitter" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

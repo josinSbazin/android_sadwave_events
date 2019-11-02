@@ -19,4 +19,10 @@
     <string name="preferences_last_city">last_city</string>
     <string name="empty_cities">Городов нет</string>
     <string name="empty_events">Мертвецы, гигов нет</string>
+    <string name="main_social_message">Sadwave в социальных сетях</string>
+    <string name="cd_facebook">Facebook</string>
+    <string name="cd_vkontakte">Vkontakte</string>
+    <string name="cd_telegram">Telegram</string>
+    <string name="cd_yandex_zen">Yandex.zen</string>
+    <string name="cd_twitter">Twitter</string>
 </resources>
