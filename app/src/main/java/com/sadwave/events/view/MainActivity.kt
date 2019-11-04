@@ -6,6 +6,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.provider.CalendarContract.Events
+import android.view.View
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ShareCompat
@@ -23,6 +25,7 @@ import com.sadwave.events.net.CityEntity
 import com.sadwave.events.net.EventEntity
 import com.sadwave.events.util.SadDateFormatter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_event.view.*
 import kotlinx.android.synthetic.main.main_content.*
 import org.koin.android.ext.android.get
 import java.util.*
@@ -212,7 +215,15 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
         return sharedPref.getString(getString(R.string.preferences_last_city), null)
     }
 
+    //Obsolete (replace by SocialEntity and adapter
+    fun onClickSocial(view: View) {
+        val but : ImageButton = view as ImageButton
+        //but.id todo костыль, заменю на mvp
+    }
+
     companion object {
         private const val DEFAULT_HOURS = 19
     }
+
+
 }

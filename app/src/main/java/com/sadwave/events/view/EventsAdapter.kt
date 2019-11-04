@@ -74,15 +74,16 @@ class EventsAdapter(
                 dateString = sadDateFormatter.getFormattedDate(eventDate)
             }
 
+            var timeString = ""
             if (eventTime != null) {
-                val timeString = sadDateFormatter.getFormattedTime(eventTime)
-                if (timeString.isNotBlank()) {
-                    dateString += " в $timeString"
-                }
+                timeString = sadDateFormatter.getFormattedTime(eventTime)
             }
 
+            itemView.name.textOrGone = event.name?.trim()
             itemView.date.textOrGone = dateString.trim()
+            itemView.time.textOrGone = timeString.trim()
             itemView.description.textOrGone = event.overview?.trim()
+
         }
 
         fun recycle() {

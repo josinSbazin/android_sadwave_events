@@ -1,9 +1,7 @@
 package com.sadwave.events.mvp
 
-import android.content.Context
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.sadwave.events.R
 import com.sadwave.events.net.API
 import com.sadwave.events.net.CityEntity
 import kotlinx.coroutines.*

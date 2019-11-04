@@ -74,62 +74,67 @@
 
                 <ImageButton
                     android:id="@+id/button_fb"
-                    style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
+                    style="@style/Widget.AppCompat.ImageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#00FFFFFF"
                     android:clickable="true"
                     android:contentDescription="@string/cd_facebook"
                     android:focusable="true"
-                    android:onClick="onClick_social"
+                    android:onClick="onClickSocial"
                     android:src="@drawable/ic_bc_fb" />
 
                 <ImageButton
                     android:id="@+id/button_vk"
-                    style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
+                    style="@style/Widget.AppCompat.ImageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#00FFFFFF"
                     android:clickable="true"
                     android:contentDescription="@string/cd_vkontakte"
                     android:focusable="true"
-                    android:onClick="onClick_social"
+                    android:onClick="onClickSocial"
                     android:src="@drawable/ic_bc_vk" />
 
                 <ImageButton
                     android:id="@+id/button_tg"
-                    style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
+                    style="@style/Widget.AppCompat.ImageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#00FFFFFF"
                     android:clickable="true"
                     android:contentDescription="@string/cd_telegram"
                     android:focusable="true"
-                    android:onClick="onClick_social"
+                    android:onClick="onClickSocial"
                     android:src="@drawable/ic_bc_telegram" />
 
                 <ImageButton
                     android:id="@+id/button_zn"
-                    style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
+                    style="@style/Widget.AppCompat.ImageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#00FFFFFF"
                     android:clickable="true"
                     android:contentDescription="@string/cd_yandex_zen"
                     android:focusable="true"
-                    android:onClick="onClick_social"
+                    android:onClick="onClickSocial"
                     android:src="@drawable/ic_bc_dzen" />
 
                 <ImageButton
                     android:id="@+id/button_tt"
-                    style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
+                    style="@style/Widget.AppCompat.ImageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#00FFFFFF"
                     android:clickable="true"
                     android:contentDescription="@string/cd_twitter"
                     android:focusable="true"
-                    android:onClick="onClick_social"
+                    android:onClick="onClickSocial"
                     android:src="@drawable/ic_bc_twitter" />
 
             </LinearLayout>
