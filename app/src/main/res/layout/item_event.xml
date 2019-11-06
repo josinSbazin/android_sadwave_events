@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    android:background="@drawable/shape_rounded"
+    android:layout_margin="@dimen/event_card_margin"
     app:cardBackgroundColor="@color/design_default_color_surface"
-    app:cardElevation="4dp"
-    app:cornerRadius="20dp">
+    app:cardCornerRadius="@dimen/event_corners_radius"
+    app:cardElevation="@dimen/event_card_elevation">
 
     <LinearLayout
         android:id="@+id/container"
@@ -22,12 +21,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="@dimen/fab_margin"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="@dimen/fab_margin"
             android:adjustViewBounds="true"
-            android:background="@drawable/shape_white_rounded"
+            android:background="@drawable/shape_rounded"
             android:contentDescription="@string/cd_event_image"
             android:scaleType="fitStart"
             tools:srcCompat="@drawable/default_image" />
@@ -37,13 +36,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="@dimen/fab_margin"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:drawablePadding="5dp"
+            android:layout_marginRight="@dimen/fab_margin"
             android:fontFamily="@font/montserrat_bold"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_event_title_size"
             tools:text="FXD:ЗИМА" />
 
         <LinearLayout
@@ -51,10 +49,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="@dimen/fab_margin"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="@dimen/fab_margin"
             android:orientation="horizontal">
 
             <TextView
@@ -63,9 +61,9 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_rd_school_calendar_white"
                 android:drawableLeft="@drawable/ic_rd_school_calendar_white"
-                android:drawablePadding="5dp"
+                android:drawablePadding="@dimen/text_event_drawable_padding"
                 android:fontFamily="@font/montserrat_semibold"
-                android:textSize="15sp"
+                android:textSize="@dimen/text_event_header_size"
                 tools:text="22 августа, Воскресенье" />
         </LinearLayout>
 
@@ -74,10 +72,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="@dimen/fab_margin"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="@dimen/fab_margin"
             android:orientation="horizontal">
 
             <TextView
@@ -86,9 +84,9 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_rd_time_white"
                 android:drawableLeft="@drawable/ic_rd_time_white"
-                android:drawablePadding="4dp"
+                android:drawablePadding="@dimen/text_event_drawable_padding"
                 android:fontFamily="@font/montserrat_semibold"
-                android:textSize="15sp"
+                android:textSize="@dimen/text_event_header_size"
                 tools:text="16:00" />
 
             <TextView
@@ -99,9 +97,10 @@
                 android:layout_marginLeft="14dp"
                 android:drawableStart="@drawable/ic_rd_place_white"
                 android:drawableLeft="@drawable/ic_rd_place_white"
-                android:drawablePadding="5dp"
+                android:drawablePadding="@dimen/text_event_drawable_padding"
                 android:fontFamily="@font/montserrat_semibold"
-                android:textSize="15sp"
+                android:textSize="@dimen/text_event_header_size"
+                android:visibility="gone"
                 tools:text="Клуб «Плутон»" />
 
         </LinearLayout>
@@ -111,12 +110,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="@dimen/fab_margin"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="@dimen/fab_margin"
             android:fontFamily="@font/montserrat_medium"
-            android:textSize="12sp"
+            android:textSize="@dimen/text_event_content_size"
             tools:text="@tools:sample/lorem/random[0]" />
 
         <LinearLayout
@@ -125,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="@dimen/fab_margin"
             android:gravity="end">
 
             <ImageButton

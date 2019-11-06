@@ -1,13 +1,17 @@
 package com.sadwave.events.view
 
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Transformation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.sadwave.events.R
 import com.sadwave.events.net.EventEntity
+import com.sadwave.events.util.RoundedCornersTransformation
 import com.sadwave.events.util.SadDateFormatter
 import kotlinx.android.synthetic.main.item_event.view.*
 
@@ -62,7 +66,7 @@ class EventsAdapter(
                     .load(imgUrl)
                     .placeholder(R.drawable.default_image)
                     .transition(DrawableTransitionOptions().crossFade())
-                    .dontTransform()
+                    .transform(RoundedCorners(15))
                     .into(itemView.image)
             }
 
