@@ -1,5 +1,6 @@
 package com.sadwave.events.view
 
+import android.content.res.Resources
 import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +8,10 @@ import android.view.ViewGroup
 import android.view.animation.Transformation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.sadwave.events.R
 import com.sadwave.events.net.EventEntity
 import com.sadwave.events.util.RoundedCornersTransformation
@@ -60,13 +63,15 @@ class EventsAdapter(
             this.event = event
 
             val imgUrl = event.photo
+            val radius = itemView.resources.getDimensionPixelSize(R.dimen.event_corners_radius)
             if (imgUrl != null) {
                 Glide
                     .with(itemView.context)
                     .load(imgUrl)
+                    .transform(CenterCrop(), RoundedCorners(radius))
                     .placeholder(R.drawable.default_image)
                     .transition(DrawableTransitionOptions().crossFade())
-                    .transform(RoundedCorners(15))
+                    //.dontTransform()
                     .into(itemView.image)
             }
 

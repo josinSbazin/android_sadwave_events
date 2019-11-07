@@ -4,7 +4,7 @@
     android:id="@+id/text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:drawableStart="@drawable/ic_rd_star_green"
+    android:drawableStart="@drawable/ic_star"
     android:drawablePadding="5dp"
     android:fontFamily="@font/montserrat_bold"
     android:orientation="vertical"

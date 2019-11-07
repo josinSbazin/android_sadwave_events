@@ -72,70 +72,60 @@
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/button_fb"
-                    style="@style/Widget.AppCompat.ImageButton"
+                <ImageView
+                    android:id="@+id/fb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
                     android:clickable="true"
                     android:contentDescription="@string/cd_facebook"
                     android:focusable="true"
                     android:onClick="onClickSocial"
-                    android:src="@drawable/ic_bc_fb" />
+                    app:srcCompat="@drawable/bc_fb" />
 
-                <ImageButton
-                    android:id="@+id/button_vk"
-                    style="@style/Widget.AppCompat.ImageButton"
+                <ImageView
+                    android:id="@+id/vk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
                     android:clickable="true"
                     android:contentDescription="@string/cd_vkontakte"
                     android:focusable="true"
                     android:onClick="onClickSocial"
-                    android:src="@drawable/ic_bc_vk" />
+                    app:srcCompat="@drawable/bc_vk" />
 
-                <ImageButton
-                    android:id="@+id/button_tg"
-                    style="@style/Widget.AppCompat.ImageButton"
+                <ImageView
+                    android:id="@+id/tg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
                     android:clickable="true"
                     android:contentDescription="@string/cd_telegram"
                     android:focusable="true"
                     android:onClick="onClickSocial"
-                    android:src="@drawable/ic_bc_telegram" />
+                    app:srcCompat="@drawable/bc_telegram" />
 
-                <ImageButton
-                    android:id="@+id/button_zn"
-                    style="@style/Widget.AppCompat.ImageButton"
+                <ImageView
+                    android:id="@+id/zn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
                     android:clickable="true"
                     android:contentDescription="@string/cd_yandex_zen"
                     android:focusable="true"
                     android:onClick="onClickSocial"
-                    android:src="@drawable/ic_bc_dzen" />
+                    app:srcCompat="@drawable/ic_bc_dzen" />
 
-                <ImageButton
-                    android:id="@+id/button_tt"
-                    style="@style/Widget.AppCompat.ImageButton"
+                <ImageView
+                    android:id="@+id/tt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
                     android:clickable="true"
                     android:contentDescription="@string/cd_twitter"
                     android:focusable="true"
                     android:onClick="onClickSocial"
-                    android:src="@drawable/ic_bc_twitter" />
+                    app:srcCompat="@drawable/bc_twitter" />
 
             </LinearLayout>
 

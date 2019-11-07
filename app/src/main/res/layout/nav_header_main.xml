@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="25dp"
     android:adjustViewBounds="true"
+    android:contentDescription="@string/cd_logo"
     android:cropToPadding="false"
     android:paddingStart="32dp"
     android:paddingEnd="32dp"

@@ -33,8 +33,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_place_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\caxap" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="bc_fb" />
+                            <entry key="sourceFile" value="C:\Users\caxap\Desktop\fb.svg" />
                           </map>
                         </option>
                       </PersistentState>
