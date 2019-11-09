@@ -32,7 +32,7 @@ class EventsAdapter(
 
     fun filterEntities(text: String) {
         val filtered = mutableListOf<EventEntity>()
-        events.forEach {
+        rawEvents.forEach {
             if (it.name?.contains(text, ignoreCase = true) == true
                 || it.overview?.contains(text, ignoreCase = true) == true
                 || sadDateFormatter.getFormattedDate(it.date?.date).contains(text, ignoreCase = true) == true

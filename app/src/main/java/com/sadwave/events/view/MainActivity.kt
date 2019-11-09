@@ -43,6 +43,7 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
     private val sadDateFormatter: SadDateFormatter = get()
     private val citiesAdapter: CitiesAdapter = CitiesAdapter(this)
     private val eventsAdapter: EventsAdapter = EventsAdapter(this, sadDateFormatter)
+    private lateinit var searchItem: SearchView
 
     @InjectPresenter
     lateinit var presenter: MainPresenter
@@ -74,7 +75,7 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu_main, menu)
-        val searchItem = menu.findItem(R.id.app_bar_search).actionView as SearchView
+        searchItem = menu.findItem(R.id.app_bar_search).actionView as SearchView
         searchItem.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(text: String): Boolean {
                 eventsAdapter.filterEntities(text)
@@ -84,26 +85,27 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
 
             override fun onQueryTextChange(text: String): Boolean {
                 eventsAdapter.filterEntities(text)
-                // Todo reaction on symbols remove
+                if (searchItem.query.isEmpty()) {
+                    searchItem.isIconified = true
+                    searchItem.clearFocus()
+                }
                 return true
             }
         })
         searchItem.onFocusChangeListener = object : View.OnFocusChangeListener {
             override fun onFocusChange(view: View?, p1: Boolean) {
-                //view?.clearFocus()
-                //eventsAdapter.FilterEntities(text)
+                searchItem.clearFocus()
                 // Todo event touch keyboard hide
             }
         }
         searchItem.setOnQueryTextFocusChangeListener(object : View.OnFocusChangeListener{
             override fun onFocusChange(view: View?, p1: Boolean) {
-                //view?.clearFocus()
+                // Todo what is this?
             }
         })
+
         return super.onCreateOptionsMenu(menu)
     }
-
-
 
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -163,6 +165,8 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
             drawerLayout.closeDrawers()
             return
         }
+        searchItem.setQuery("",false)
+        searchItem.clearFocus()
         presenter.selectCity(city)
         saveLastCityName(city.name)
     }
