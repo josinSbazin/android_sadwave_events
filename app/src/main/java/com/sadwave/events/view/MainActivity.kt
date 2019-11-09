@@ -6,8 +6,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.provider.CalendarContract.Events
+import android.view.Menu
 import android.view.View
 import android.widget.ImageButton
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ShareCompat
@@ -29,6 +31,11 @@ import kotlinx.android.synthetic.main.item_event.view.*
 import kotlinx.android.synthetic.main.main_content.*
 import org.koin.android.ext.android.get
 import java.util.*
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 
 class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
@@ -63,6 +70,40 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
 
         presenter.refresh(loadLastCityName())
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
+        val searchItem = menu.findItem(R.id.app_bar_search).actionView as SearchView
+        searchItem.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(text: String): Boolean {
+                eventsAdapter.filterEntities(text)
+                searchItem.clearFocus()
+                return true
+            }
+
+            override fun onQueryTextChange(text: String): Boolean {
+                eventsAdapter.filterEntities(text)
+                // Todo reaction on symbols remove
+                return true
+            }
+        })
+        searchItem.onFocusChangeListener = object : View.OnFocusChangeListener {
+            override fun onFocusChange(view: View?, p1: Boolean) {
+                //view?.clearFocus()
+                //eventsAdapter.FilterEntities(text)
+                // Todo event touch keyboard hide
+            }
+        }
+        searchItem.setOnQueryTextFocusChangeListener(object : View.OnFocusChangeListener{
+            override fun onFocusChange(view: View?, p1: Boolean) {
+                //view?.clearFocus()
+            }
+        })
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
 
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -111,7 +152,7 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
                 } else {
                     events.isVisible = true
                     emptyEventsMessage.isVisible = false
-                    eventsAdapter.events = state.events
+                    eventsAdapter.rawEvents = state.events
                 }
             }
         }

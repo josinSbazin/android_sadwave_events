@@ -1,21 +1,14 @@
 package com.sadwave.events.view
 
-import android.content.res.Resources
-import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Transformation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
 import com.sadwave.events.R
 import com.sadwave.events.net.EventEntity
-import com.sadwave.events.util.RoundedCornersTransformation
 import com.sadwave.events.util.SadDateFormatter
 import kotlinx.android.synthetic.main.item_event.view.*
 
@@ -24,11 +17,31 @@ class EventsAdapter(
     private val sadDateFormatter: SadDateFormatter
 ) :
     RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
-    var events: List<EventEntity> = emptyList()
+
+    var rawEvents: List<EventEntity> = emptyList()
+        set(value) {
+            field = value
+            events = value.toMutableList()
+        }
+
+    var events: MutableList<EventEntity> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
+
+    fun filterEntities(text: String) {
+        val filtered = mutableListOf<EventEntity>()
+        events.forEach {
+            if (it.name?.contains(text, ignoreCase = true) == true
+                || it.overview?.contains(text, ignoreCase = true) == true
+                || sadDateFormatter.getFormattedDate(it.date?.date).contains(text, ignoreCase = true) == true
+                || it.url?.contains(text, ignoreCase = true) == true) {
+                filtered.add(it)
+            }
+        }
+        events = filtered
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_event, parent, false)
