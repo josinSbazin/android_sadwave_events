@@ -31,21 +31,18 @@ class EventsAdapter(
         }
 
     fun filterEntities(text: String) {
-        val filtered = mutableListOf<EventEntity>()
-
-
-        rawEvents.forEach {data ->
-            text.split(' ').forEach { word ->
-                if (data.name?.contains(word, ignoreCase = true) == true
-                    || data.overview?.contains(word, ignoreCase = true) == true
-                    || sadDateFormatter.getFormattedDate(data.date?.date).contains(word, ignoreCase = true) == true
-                    || data.url?.contains(word, ignoreCase = true) == true) {
-                    if (!filtered.contains(data)) filtered.add(data)
-                    //return@forEach todo normal break
+        events = if (text.isEmpty()) {
+            rawEvents.toMutableList()
+        } else {
+            rawEvents.filter { data ->
+                text.split(' ').all {word ->
+                    data.name?.contains(word, ignoreCase = true) == true
+                            || data.overview?.contains(word, ignoreCase = true) == true
+                            || sadDateFormatter.getFormattedDate(data.date?.date).contains(word, ignoreCase = true)
+                            || data.url?.contains(word, ignoreCase = true) == true
                 }
-            }
+            }.toMutableList()
         }
-        events = filtered
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
