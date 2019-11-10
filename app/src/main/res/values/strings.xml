@@ -27,4 +27,9 @@
     <string name="cd_telegram">Telegram</string>
     <string name="cd_yandex_zen">Yandex.zen</string>
     <string name="cd_twitter">Twitter</string>
+    <string name="link_fb">https://www.facebook.com/sadwavezine/</string>
+    <string name="link_vk">https://vk.com/sadwave</string>
+    <string name="link_tg">https://t.me/sadwave</string>
+    <string name="link_zn">https://zen.yandex.ru/sadwave.com</string>
+    <string name="link_tt">https://twitter.com/ssadwave?lang=ru</string>
 </resources>

@@ -260,10 +260,18 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
         return sharedPref.getString(getString(R.string.preferences_last_city), null)
     }
 
-    //Obsolete (replace by SocialEntity and adapter
     fun onClickSocial(view: View) {
-        val but : ImageButton = view as ImageButton
-        //but.id todo костыль, заменю на mvp
+        val intent = Intent(Intent.ACTION_VIEW)
+        val url = getString(when (view.id) {
+            R.id.fb -> R.string.link_fb
+            R.id.vk -> R.string.link_vk
+            R.id.tg -> R.string.link_tg
+            R.id.zn -> R.string.link_zn
+            R.id.tt -> R.string.link_tt
+            else -> R.string.link_tg
+        })
+        intent.data = Uri.parse(url)
+        startActivity(intent)
     }
 
     companion object {

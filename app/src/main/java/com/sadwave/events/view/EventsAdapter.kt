@@ -32,12 +32,17 @@ class EventsAdapter(
 
     fun filterEntities(text: String) {
         val filtered = mutableListOf<EventEntity>()
-        rawEvents.forEach {
-            if (it.name?.contains(text, ignoreCase = true) == true
-                || it.overview?.contains(text, ignoreCase = true) == true
-                || sadDateFormatter.getFormattedDate(it.date?.date).contains(text, ignoreCase = true) == true
-                || it.url?.contains(text, ignoreCase = true) == true) {
-                filtered.add(it)
+
+
+        rawEvents.forEach {data ->
+            text.split(' ').forEach { word ->
+                if (data.name?.contains(word, ignoreCase = true) == true
+                    || data.overview?.contains(word, ignoreCase = true) == true
+                    || sadDateFormatter.getFormattedDate(data.date?.date).contains(word, ignoreCase = true) == true
+                    || data.url?.contains(word, ignoreCase = true) == true) {
+                    if (!filtered.contains(data)) filtered.add(data)
+                    //return@forEach todo normal break
+                }
             }
         }
         events = filtered
