@@ -24,7 +24,7 @@ class EventsAdapter(
             events = value.toMutableList()
         }
 
-    var events: MutableList<EventEntity> = mutableListOf()
+    private var events: List<EventEntity> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -32,7 +32,7 @@ class EventsAdapter(
 
     fun filterEntities(text: String) {
         events = if (text.isEmpty()) {
-            rawEvents.toMutableList()
+            rawEvents
         } else {
             rawEvents.filter { data ->
                 text.split(' ').all {word ->
@@ -41,7 +41,7 @@ class EventsAdapter(
                             || sadDateFormatter.getFormattedDate(data.date?.date).contains(word, ignoreCase = true)
                             || data.url?.contains(word, ignoreCase = true) == true
                 }
-            }.toMutableList()
+            }
         }
     }
 

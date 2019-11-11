@@ -8,7 +8,6 @@ import android.provider.CalendarContract
 import android.provider.CalendarContract.Events
 import android.view.Menu
 import android.view.View
-import android.widget.ImageButton
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -27,15 +26,9 @@ import com.sadwave.events.net.CityEntity
 import com.sadwave.events.net.EventEntity
 import com.sadwave.events.util.SadDateFormatter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_event.view.*
 import kotlinx.android.synthetic.main.main_content.*
 import org.koin.android.ext.android.get
 import java.util.*
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
-
 
 
 class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
@@ -92,15 +85,10 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
                 return true
             }
         })
-        searchItem.onFocusChangeListener = object : View.OnFocusChangeListener {
-            override fun onFocusChange(view: View?, p1: Boolean) {
-                searchItem.clearFocus()
-                // Todo event touch keyboard hide
-            }
-        }
         searchItem.setOnQueryTextFocusChangeListener(object : View.OnFocusChangeListener{
             override fun onFocusChange(view: View?, p1: Boolean) {
-                // Todo what is this?
+                searchItem.clearFocus()
+                searchItem.onActionViewCollapsed()
             }
         })
 
