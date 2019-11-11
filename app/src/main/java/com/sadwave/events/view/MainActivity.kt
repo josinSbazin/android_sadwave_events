@@ -86,9 +86,10 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
             }
         })
         searchItem.setOnQueryTextFocusChangeListener(object : View.OnFocusChangeListener{
-            override fun onFocusChange(view: View?, p1: Boolean) {
-                searchItem.clearFocus()
-                searchItem.onActionViewCollapsed()
+            override fun onFocusChange(view: View?, mode: Boolean) {
+                if (!mode) {
+                    searchItem.clearFocus()
+                }
             }
         })
 

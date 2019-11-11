@@ -12,7 +12,7 @@
     <include
         layout="@layout/main_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"
@@ -21,13 +21,15 @@
         android:layout_gravity="start"
         android:background="@drawable/gradient_grey"
         android:fitsSystemWindows="true"
+        android:focusableInTouchMode="true"
         android:maxWidth="304dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="25dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:focusableInTouchMode="true">
 
             <include layout="@layout/nav_header_main" />
 

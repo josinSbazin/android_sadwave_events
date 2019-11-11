@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     tools:context=".view.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -28,6 +29,7 @@
         android:id="@+id/progressLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:loadingProgressBarColor="@color/colorPrimary">
 
@@ -36,6 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/rdColorMainBackground"
+            android:focusableInTouchMode="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:context=".view.MainActivity"
             tools:listitem="@layout/item_event"

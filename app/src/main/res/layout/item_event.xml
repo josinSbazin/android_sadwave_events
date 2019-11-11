@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/event_card_margin"
+    android:focusableInTouchMode="true"
     app:cardBackgroundColor="@color/design_default_color_surface"
     app:cardCornerRadius="@dimen/event_corners_radius"
     app:cardElevation="@dimen/event_card_elevation">
