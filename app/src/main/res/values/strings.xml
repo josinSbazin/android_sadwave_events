@@ -6,6 +6,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
     <string name="error_title">Беда!</string>
     <string name="error_description">Не получилось</string>
     <string name="error_btn_text">Повторить</string>
@@ -13,10 +14,22 @@
     <string name="cd_event_image">Афиша</string>
     <string name="cd_share">Поделиться</string>
     <string name="cd_calendar">Добавить событие</string>
+    <string name="cd_logo">Sadwave Events</string>
     <string name="share">Поделиться событием %s</string>
     <string name="gig_default">Гигуля</string>
     <string name="preferences_file_name">com.sadwave.events.preferences</string>
     <string name="preferences_last_city">last_city</string>
     <string name="empty_cities">Городов нет</string>
     <string name="empty_events">Мертвецы, гигов нет</string>
+    <string name="main_social_message">Sadwave в социальных сетях</string>
+    <string name="cd_facebook">Facebook</string>
+    <string name="cd_vkontakte">Vkontakte</string>
+    <string name="cd_telegram">Telegram</string>
+    <string name="cd_yandex_zen">Yandex.zen</string>
+    <string name="cd_twitter">Twitter</string>
+    <string name="link_fb">https://www.facebook.com/sadwavezine/</string>
+    <string name="link_vk">https://vk.com/sadwave</string>
+    <string name="link_tg">https://t.me/sadwave</string>
+    <string name="link_zn">https://zen.yandex.ru/sadwave.com</string>
+    <string name="link_tt">https://twitter.com/ssadwave?lang=ru</string>
 </resources>

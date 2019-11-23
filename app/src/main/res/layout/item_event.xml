@@ -4,107 +4,139 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardElevation="4dp"
-    app:cornerRadius="2dp">
+    android:layout_margin="@dimen/event_card_margin"
+    android:focusableInTouchMode="true"
+    app:cardBackgroundColor="@color/design_default_color_surface"
+    app:cardCornerRadius="@dimen/event_corners_radius"
+    app:cardElevation="@dimen/event_card_elevation">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/fab_margin"
+        android:paddingTop="@dimen/fab_margin"
+        android:paddingRight="@dimen/fab_margin"
+        android:paddingBottom="@dimen/fab_margin">
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/cd_event_image"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@id/date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="spread_inside"
-            app:srcCompat="@drawable/default_empty" />
+            android:scaleType="fitCenter"
+            tools:srcCompat="@drawable/placeholder_rounded" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="@color/rdColorEventTitle"
+            android:textSize="@dimen/text_event_title_size"
+            tools:text="FXD:ЗИМА" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_event_drawable_horizontal_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_school_calendar_small"
+                android:drawableLeft="@drawable/ic_school_calendar_small"
+                android:drawablePadding="@dimen/text_event_drawable_padding"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/rdColorEventDescription"
+                android:textSize="@dimen/text_event_header_size"
+                tools:text="22 августа, Воскресенье" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_event_drawable_horizontal_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_time"
+                android:drawableLeft="@drawable/ic_time"
+                android:drawablePadding="@dimen/text_event_drawable_padding"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/rdColorEventDescription"
+                android:textSize="@dimen/text_event_header_size"
+                tools:text="16:00" />
+
+            <TextView
+                android:id="@+id/place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:drawableStart="@drawable/ic_place"
+                android:drawableLeft="@drawable/ic_place"
+                android:drawablePadding="@dimen/text_event_drawable_padding"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/rdColorEventDescription"
+                android:textSize="@dimen/text_event_header_size"
+                android:visibility="gone"
+                tools:text="Клуб «Плутон»" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:textColor="@color/rdColorEventDescription"
+            android:textSize="@dimen/text_event_content_size"
+            tools:text="@tools:sample/lorem/random[1]" />
 
         <LinearLayout
             android:id="@+id/itemsContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/shape_rounded"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_gravity="end"
+            android:gravity="end"
+            android:paddingTop="@dimen/text_event_drawable_horizontal_margin"
+            android:paddingBottom="@dimen/text_event_drawable_horizontal_margin">
 
             <ImageButton
                 android:id="@+id/calendar"
+                style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/cd_calendar"
-                android:padding="8dp"
-                app:layout_constraintEnd_toStartOf="@id/share"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_calendar" />
+                android:paddingLeft="@dimen/event_button_padding"
+                android:paddingRight="@dimen/event_button_padding"
+                android:scaleType="center"
+                android:tint="@color/colorGreen"
+                app:srcCompat="@drawable/ic_school_calendar" />
 
             <ImageButton
                 android:id="@+id/share"
+                style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
                 android:contentDescription="@string/cd_share"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:paddingLeft="@dimen/event_button_padding"
+                android:paddingRight="@dimen/event_button_padding"
+                android:tint="@color/colorGreen"
                 app:srcCompat="@drawable/ic_share" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@id/description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image"
-            tools:text="@tools:sample/date/ddmmyy" />
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            app:layout_constraintBottom_toBottomOf="@id/guideline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/date"
-            tools:text="@tools:sample/lorem/random" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_end="16dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

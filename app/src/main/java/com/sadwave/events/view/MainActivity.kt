@@ -6,6 +6,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.provider.CalendarContract.Events
+import android.view.Menu
+import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ShareCompat
@@ -33,6 +36,7 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
     private val sadDateFormatter: SadDateFormatter = get()
     private val citiesAdapter: CitiesAdapter = CitiesAdapter(this)
     private val eventsAdapter: EventsAdapter = EventsAdapter(this, sadDateFormatter)
+    private lateinit var searchItem: SearchView
 
     @InjectPresenter
     lateinit var presenter: MainPresenter
@@ -61,6 +65,37 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
         presenter.refresh(loadLastCityName())
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
+        searchItem = menu.findItem(R.id.app_bar_search).actionView as SearchView
+        searchItem.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(text: String): Boolean {
+                eventsAdapter.filterEntities(text)
+                searchItem.clearFocus()
+                return true
+            }
+
+            override fun onQueryTextChange(text: String): Boolean {
+                eventsAdapter.filterEntities(text)
+                if (searchItem.query.isEmpty()) {
+                    searchItem.isIconified = true
+                    searchItem.clearFocus()
+                }
+                return true
+            }
+        })
+        searchItem.setOnQueryTextFocusChangeListener(object : View.OnFocusChangeListener{
+            override fun onFocusChange(view: View?, mode: Boolean) {
+                if (!mode) {
+                    searchItem.clearFocus()
+                }
+            }
+        })
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
@@ -78,7 +113,7 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
             is State.Error -> {
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 progressLayout.showError(
-                    R.drawable.ic_error_black_24dp,
+                    R.drawable.ic_error_black,
                     getString(R.string.error_title),
                     getString(R.string.error_description),
                     getString(R.string.error_btn_text)
@@ -108,7 +143,7 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
                 } else {
                     events.isVisible = true
                     emptyEventsMessage.isVisible = false
-                    eventsAdapter.events = state.events
+                    eventsAdapter.rawEvents = state.events
                 }
             }
         }
@@ -119,6 +154,8 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
             drawerLayout.closeDrawers()
             return
         }
+        searchItem.setQuery("",false)
+        searchItem.clearFocus()
         presenter.selectCity(city)
         saveLastCityName(city.name)
     }
@@ -212,7 +249,23 @@ class MainActivity : MvpAppCompatActivity(), MainView, CitiesAdapter.Listener,
         return sharedPref.getString(getString(R.string.preferences_last_city), null)
     }
 
+    fun onClickSocial(view: View) {
+        val intent = Intent(Intent.ACTION_VIEW)
+        val url = getString(when (view.id) {
+            R.id.fb -> R.string.link_fb
+            R.id.vk -> R.string.link_vk
+            R.id.tg -> R.string.link_tg
+            R.id.zn -> R.string.link_zn
+            R.id.tt -> R.string.link_tt
+            else -> R.string.link_tg
+        })
+        intent.data = Uri.parse(url)
+        startActivity(intent)
+    }
+
     companion object {
         private const val DEFAULT_HOURS = 19
     }
+
+
 }

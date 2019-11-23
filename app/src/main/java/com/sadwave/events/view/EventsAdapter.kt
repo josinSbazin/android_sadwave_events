@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.sadwave.events.R
 import com.sadwave.events.net.EventEntity
@@ -16,11 +17,33 @@ class EventsAdapter(
     private val sadDateFormatter: SadDateFormatter
 ) :
     RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
-    var events: List<EventEntity> = emptyList()
+
+    var rawEvents: List<EventEntity> = emptyList()
+        set(value) {
+            field = value
+            events = value.toMutableList()
+        }
+
+    private var events: List<EventEntity> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
+
+    fun filterEntities(text: String) {
+        events = if (text.isEmpty()) {
+            rawEvents
+        } else {
+            rawEvents.filter { data ->
+                text.split(' ').all {word ->
+                    data.name?.contains(word, ignoreCase = true) == true
+                            || data.overview?.contains(word, ignoreCase = true) == true
+                            || sadDateFormatter.getFormattedDate(data.date?.date).contains(word, ignoreCase = true)
+                            || data.url?.contains(word, ignoreCase = true) == true
+                }
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_event, parent, false)
@@ -56,17 +79,19 @@ class EventsAdapter(
             this.event = event
 
             val imgUrl = event.photo
+            val radius = itemView.resources.getDimensionPixelSize(R.dimen.event_corners_radius)
             if (imgUrl != null) {
                 Glide
                     .with(itemView.context)
                     .load(imgUrl)
-                    .placeholder(R.drawable.default_image)
+                    .placeholder(R.drawable.shape_rounded)
                     .transition(DrawableTransitionOptions().crossFade())
-                    .dontTransform()
+                    .transform(RoundedCorners(radius))
                     .into(itemView.image)
             } else {
                 itemView.image.setImageResource(R.drawable.default_image)
             }
+
 
             val eventDate = event.date?.date
             val eventTime = event.date?.time
@@ -76,15 +101,16 @@ class EventsAdapter(
                 dateString = sadDateFormatter.getFormattedDate(eventDate)
             }
 
+            var timeString = ""
             if (eventTime != null) {
-                val timeString = sadDateFormatter.getFormattedTime(eventTime)
-                if (timeString.isNotBlank()) {
-                    dateString += " в $timeString"
-                }
+                timeString = sadDateFormatter.getFormattedTime(eventTime)
             }
 
+            itemView.name.textOrGone = event.name?.trim()
             itemView.date.textOrGone = dateString.trim()
+            itemView.time.textOrGone = timeString.trim()
             itemView.description.textOrGone = event.overview?.trim()
+
         }
 
         fun recycle() {
